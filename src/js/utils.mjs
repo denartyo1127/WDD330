@@ -33,3 +33,12 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
 }
 
+export function updateCartBadge() {
+  const cartItems = JSON.parse(localStorage.getItem('so-cart')) || [];
+  const badge = document.getElementById('cart-count');
+  
+  if (badge) {
+    badge.textContent = cartItems.length;
+    badge.style.display = cartItems.length > 0 ? 'flex' : 'none';
+  }
+}
