@@ -21,3 +21,24 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function getParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+export function renderListWithTemplate(templateFn, parentElement, list, position =  "afterbegin", clear = false) {
+  if (clear === true) {
+    parentElement.innerHTML = "";
+  }
+}
+
+export function updateCartBadge() {
+  const cartItems = JSON.parse(localStorage.getItem('so-cart')) || [];
+  const badge = document.getElementById('cart-count');
+  
+  if (badge) {
+    badge.textContent = cartItems.length;
+    badge.style.display = cartItems.length > 0 ? 'flex' : 'none';
+  }
+}
